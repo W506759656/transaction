@@ -15,5 +15,12 @@
         "psr-4": {
             "Wding\\Transcation\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wding\\Transcation\\Providers\\ServiceProvider"
+            ]
+        }
     }
 }
