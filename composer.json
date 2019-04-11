@@ -1,0 +1,19 @@
+{
+    "name": "wding/transcation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "王鼎",
+            "email": "506759656@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wding\\Transcation\\": "src/"
+        }
+    }
+}
