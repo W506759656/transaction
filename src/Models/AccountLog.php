@@ -6,12 +6,12 @@
  * Time: 下午4:00
  */
 
-namespace Wding\Transaction\Models;
+namespace Wding\transcation\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wding\Transaction\Models\AccountLog
+ * Wding\transcation\Models\AccountLog
  *
  * @property int $id
  * @property int $user_id 用户ID
@@ -23,19 +23,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $number 操作数量：正数代表增加，负数代表减少
  * @property float $after 操作后余额
  * @property string $created_at 时间
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereAccountType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereAction($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereActionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereAfter($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereBefore($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereCoinId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Wding\Transaction\Models\AccountLog whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereAction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereActionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereAfter($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereBefore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereCoinId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Wding\transcation\Models\AccountLog whereUserId($value)
  * @mixin \Eloquent
  */
 class AccountLog extends Model

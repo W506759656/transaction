@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\Transaction\Models;
+namespace Wding\transcation\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

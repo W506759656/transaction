@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\Transaction\Jobs\Withdraw;
+namespace Wding\transcation\Jobs\Withdraw;
 
 use iBrand\EC\Open\Server\Services\LTCService;
 use Illuminate\Bus\Queueable;
@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Wding\Transaction\Models\Export;
+use Wding\transcation\Models\Export;
 
 class LTC implements ShouldQueue
 {

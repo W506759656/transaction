@@ -1,12 +1,12 @@
 <?php
 
-namespace iBrand\EC\Open\Server\Services;
+namespace Wding\Transcatin\Services;
 
 /**
  * Class USDTService
  * @package App\Services
  *
- * @method array omni_listtransactions(string $account, int $count)
+ * @method array omni_listtranscations(string $account, int $count)
  * @method string omni_funded_send(string $fromAddress, string $toAddress, int $id, $number, string $feeAddress)
  */
 class USDTService extends BTCService

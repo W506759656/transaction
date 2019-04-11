@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\Transaction\Jobs;
+namespace Wding\transcation\Jobs;
 
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
@@ -9,10 +9,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\DB;
-use Wding\Transaction\Models\Account;
-use Wding\Transaction\Models\AccountLog;
-use Wding\Transaction\Models\Coin;
-use Wding\Transaction\Models\Import;
+use Wding\transcation\Models\Account;
+use Wding\transcation\Models\AccountLog;
+use Wding\transcation\Models\Coin;
+use Wding\transcation\Models\Import;
 
 class Recharge implements ShouldQueue
 {
@@ -64,7 +64,7 @@ class Recharge implements ShouldQueue
             return;
         }
 
-        DB::transaction(function () {
+        DB::transcation(function () {
             /** @var Account $account */
             $account = Account::where('coin_id', $this->coin->id)
                 ->where('address', $this->to)

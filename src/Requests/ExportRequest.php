@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\Transaction\Requests;
+namespace Wding\transcation\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

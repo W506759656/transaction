@@ -1,6 +1,6 @@
 <?php
 
-namespace iBrand\EC\Open\Server\Services;
+namespace Wding\Transcatin\Services;
 
 
 use Exception;
@@ -11,10 +11,10 @@ use GuzzleHttp\Client;
  * @package App\Services\RPC
  *
  * @method string eth_blockNumber()
- * @method array eth_getBlockByNumber(string $blockNumber, bool $returnFullTransaction)
+ * @method array eth_getBlockByNumber(string $blockNumber, bool $returnFulltranscation)
  * @method array eth_getLogs(array $options)
  * @method string personal_newAccount(string $password)
- * @method string personal_sendTransaction(array $transaction, string $password)
+ * @method string personal_sendtranscation(array $transcation, string $password)
  */
 class ETHService
 {

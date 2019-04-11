@@ -1,12 +1,12 @@
 <?php
 
-namespace Wding\Transaction\Console\Commands\Recharge;
+namespace Wding\transcation\Console\Commands\Recharge;
 
 use iBrand\EC\Open\Server\Services\ETHService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
-use Wding\Transaction\Jobs\Recharge;
-use Wding\Transaction\Models\Coin;
+use Wding\transcation\Jobs\Recharge;
+use Wding\transcation\Models\Coin;
 
 class ETH extends Command
 {
@@ -53,7 +53,7 @@ class ETH extends Command
 
         if ($lastBlock > $blockNumber) {
             $block = $rpc->eth_getBlockByNumber(num2hex($blockNumber + 1), true);
-            collect($block['transactions'])
+            collect($block['transcations'])
                 ->where('to', '!=', null)
                 ->where('value', '!=', '0x0')
                 ->each(function ($tx) use ($coin) {

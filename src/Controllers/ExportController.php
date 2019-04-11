@@ -1,19 +1,19 @@
 <?php
 
-namespace Wding\Transaction\Controllers;
+namespace Wding\transcation\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Wding\Transaction\Models\Account;
-use Wding\Transaction\Models\Export;
-use Wding\Transaction\Models\ExportAddress;
-use Wding\Transaction\Models\Import;
-use Wding\Transaction\Models\Setting;
-use Wding\Transaction\Requests\ExportRequest;
-use Wding\Transaction\Services\AccountService;
-use Wding\Transaction\Services\LogService;
-use Wding\Transaction\Transforms\ExportTransform;
-use Wding\Transaction\Transforms\ImportTransform;
+use Wding\transcation\Models\Account;
+use Wding\transcation\Models\Export;
+use Wding\transcation\Models\ExportAddress;
+use Wding\transcation\Models\Import;
+use Wding\transcation\Models\Setting;
+use Wding\transcation\Requests\ExportRequest;
+use Wding\Transcation\Resources\ExportResource;
+use Wding\Transcation\Resources\ImportResource;
+use Wding\transcation\Services\AccountService;
+use Wding\transcation\Services\LogService;
 
 /**
  * Created by PhpStorm.
@@ -32,31 +32,31 @@ class ExportController extends Controller
     {
         $number = $request->input('number');
         if (!\Hash::check($request->input('pay_password'), Auth::user()->pay_password)) {
-            return $this->failed('交易密码错误');
+            return $this->error(9003);
         }
         $address_id = $request->input('address_id');
         $address = ExportAddress::find($address_id);
         $coin_id = $request->input('coin_id');
         $account = Account::where('user_id', Auth::user()->id)->where('coin_id', $coin_id)->first();
         if (!$account) {
-            return $this->failed('钱包不存在');
+            return $this->error(9004);
         }
         if (!$account->coin->is_export) {
-            return $this->failed('该币种不支持提现');
+            return $this->error(9005);
         }
         if ($number <= 0) {
-            return $this->failed('提现金额不能小于0');
+            return $this->error(9006);
         }
         if ($account->available < $number) {
-            return $this->failed('钱包金额不足');
+            return $this->error(9007);
         }
         if ($account->user_id != \Auth::user()->id) {
-            return $this->failed('网络异常');
+            return $this->error(1);
         }
         $export_rate = Setting::where('key', 'export_rate')->value('value');
         $fee = $export_rate * $number; // 计算提现手续费
         try {
-            \DB::transaction(
+            \DB::transcation(
                 function () use ($account, $address, $number, $coin_id, $fee) {
                     $export = new Export();
                     $export->user_id = Auth::user()->id;
@@ -73,9 +73,9 @@ class ExportController extends Controller
                 });
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return $this->failed('网络异常');
+            return $this->error(1);
         }
-        return $this->success();
+        return $this->null();
     }
 
     /***
@@ -90,10 +90,10 @@ class ExportController extends Controller
         (new AccountService())->cancelExportCheck($export);
         $account = Account::where('user_id', $export->user_id)->where('coin_id', $export->coin_id)->first();
         if ($export->status != 0) {
-            return $this->failed('提现状态错误');
+            return $this->error(9008);
         }
         try {
-            \DB::transaction(function () use ($account, $export) {
+            \DB::transcation(function () use ($account, $export) {
                 $export->status = 2;
                 $export->save();
                 //钱包日志
@@ -105,31 +105,31 @@ class ExportController extends Controller
             });
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
-            return $this->failed('网络异常');
+            return $this->error(1);
         }
-        return $this->success();
+        return $this->null();
     }
 
     /***
      * 充值列表
      * @param Request $request
-     * @return \Dingo\Api\Http\Response
+     * @return ImportResource
      */
     public function imports(Request $request)
     {
         $imports = Import::where('user_id', Auth::user()->id)->with('coin')->orderBy('id', 'desc')->paginate($request->per_page ?? 16);
-        return $this->response()->paginator($imports, new ImportTransform());
+        return new ImportResource($imports);
     }
 
     /***
      * 提现列表
      * @param Request $request
-     * @return \Dingo\Api\Http\Response
+     * @return ExportResource
      */
     public function exports(Request $request)
     {
         $exports = Export::where('user_id', Auth::user()->id)->with('coin')->orderBy('id', 'desc')->paginate($request->per_page ?? 16);
-        return $this->response()->paginator($exports, new ExportTransform());
+        return new ExportResource($exports);
     }
 
 }

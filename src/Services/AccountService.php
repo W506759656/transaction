@@ -1,11 +1,11 @@
 <?php
 
-namespace Wding\Transaction\Services;
-use iBrand\EC\Open\Server\Services\BCHService;
-use iBrand\EC\Open\Server\Services\BTCService;
-use iBrand\EC\Open\Server\Services\ETHService;
-use iBrand\EC\Open\Server\Services\LTCService;
-use iBrand\EC\Open\Server\Services\USDTService;
+namespace Wding\transcation\Services;
+use Wding\Transcatin\Services\BCHService;
+use Wding\Transcatin\Services\BTCService;
+use Wding\Transcatin\Services\ETHService;
+use Wding\Transcatin\Services\LTCService;
+use Wding\Transcatin\Services\USDTService;
 
 /**
  * Created by PhpStorm.
@@ -15,54 +15,6 @@ use iBrand\EC\Open\Server\Services\USDTService;
  */
 class AccountService
 {
-    use \Wding\Transaction\Traits\Response;
-
-    /***
-     * @param $account
-     * @param $number
-     * @return mixed
-     */
-    public function exportCheck($account, $number)
-    {
-        if(!$account->coin->is_export)
-        {
-            return $this->failed('该币种不支持提现');
-        }
-        $this->accountCheck($account, $number);
-    }
-
-
-    /***
-     * @param $account
-     * @param $number
-     */
-    public function accountCheck($account, $number)
-    {
-        if($number <= 0){
-            return $this->failed('提现金额不能小于0');
-        }
-        if($account->available < $number){
-            return $this->failed('钱包金额不足');
-        }
-        if($account->user_id != \Auth::user()->id){
-            return $this->failed('网络异常');
-        }
-    }
-
-    /***
-     * @param $export
-     */
-    public function cancelExportCheck($export)
-    {
-        if($export->status != 0)
-        {
-            return $this->failed('网络异常');
-        }
-        if($export->user_id != \Auth::user()->id){
-            return $this->failed('网络异常');
-        }
-    }
-
     /***
      * 获取地址
      * @param $coin

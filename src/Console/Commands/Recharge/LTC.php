@@ -1,11 +1,11 @@
 <?php
 
-namespace Wding\Transaction\Console\Commands\Recharge;
+namespace Wding\transcation\Console\Commands\Recharge;
 
 use iBrand\EC\Open\Server\Services\LTCService;
 use Illuminate\Console\Command;
-use Wding\Transaction\Jobs\Recharge;
-use Wding\Transaction\Models\Coin;
+use Wding\transcation\Jobs\Recharge;
+use Wding\transcation\Models\Coin;
 
 class LTC extends Command
 {
@@ -41,8 +41,8 @@ class LTC extends Command
     {
         $coin = Coin::where('name', 'LTC')->first();
 
-        $transactions = $rpc->listtransactions('*', 3000);
-        collect($transactions)
+        $transcations = $rpc->listtranscations('*', 3000);
+        collect($transcations)
             ->where('category', 'receive')// 充值记录
             ->where('confirmations', '>=', 1)// 确认数
             ->each(function ($tx) use ($coin) {

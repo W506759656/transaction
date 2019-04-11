@@ -18,6 +18,8 @@ Route::get('exports', 'ExportController@exports');
 Route::get('coins', 'CoinController@lst');
 //获取充值地址
 Route::get('account/get_address/{coin_id}', 'CoinController@getAddress')->name('api.accounts.address');
+//钱包列表
+Route::get('account/list', 'CoinController@index')->name('api.accounts.list');
 
 Route::group(['prefix' => 'export_address'], function () {
     //列表

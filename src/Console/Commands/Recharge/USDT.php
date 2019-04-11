@@ -1,11 +1,11 @@
 <?php
 
-namespace Wding\Transaction\Console\Commands\Recharge;
+namespace Wding\transcation\Console\Commands\Recharge;
 
 use iBrand\EC\Open\Server\Services\USDTService;
 use Illuminate\Console\Command;
-use Wding\Transaction\Jobs\Recharge;
-use Wding\Transaction\Models\Coin;
+use Wding\transcation\Jobs\Recharge;
+use Wding\transcation\Models\Coin;
 
 class USDT extends Command
 {
@@ -41,8 +41,8 @@ class USDT extends Command
     {
         $coin = Coin::where('name', 'USDT')->first();
 
-        $transactions = $rpc->omni_listtransactions('*', 3000);
-        collect($transactions)
+        $transcations = $rpc->omni_listtranscations('*', 3000);
+        collect($transcations)
             ->where('confirmations', '>=', 1)// 确认数
             ->each(function ($tx) use ($coin) {
                 $hash = $tx['txid'];

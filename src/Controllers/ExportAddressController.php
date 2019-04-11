@@ -5,12 +5,13 @@
  * Date: 2019/3/29
  * Time: 下午2:37
  */
-namespace Wding\Transaction\Controllers;
+namespace Wding\transcation\Controllers;
 
 use Illuminate\Http\Request;
-use Wding\Transaction\Models\ExportAddress;
-use Wding\Transaction\Requests\AddressRequest;
-use Wding\Transaction\Transforms\ImportAddressTransform;
+use Wding\transcation\Models\ExportAddress;
+use Wding\transcation\Requests\AddressRequest;
+use Wding\Transcation\Resources\AddressResource;
+use Wding\transcation\Transforms\ImportAddressTransform;
 
 class ExportAddressController extends Controller
 {
@@ -24,7 +25,7 @@ class ExportAddressController extends Controller
         $coin_id = $request->input('coin_id');
         $user_id = \Auth::user()->id;
         $addresses = ExportAddress::where('coin_id', $coin_id)->where('user_id', $user_id)->orderBy('id', 'desc')->paginate();
-        return $this->response()->paginator($addresses, new ImportAddressTransform());
+        return new AddressResource($addresses);
     }
 
     /***
@@ -35,7 +36,7 @@ class ExportAddressController extends Controller
     public function add(AddressRequest $request)
     {
         if(!$request->has('coin_id')){
-            return $this->failed('币种id必传', 422);
+            return $this->error(9001);
         }
         $coin_id = $request->input('coin_id');
         $address = $request->input('address');
@@ -46,9 +47,9 @@ class ExportAddressController extends Controller
         $addressM->address = $address;
         $addressM->note = $note;
         if(!$addressM->save()){
-            return $this->failed('保存失败');
+            return $this->error(1);
         };
-        return $this->success();
+        return $this->null();
     }
 
     /***
@@ -60,7 +61,7 @@ class ExportAddressController extends Controller
     public function update(AddressRequest $request)
     {
         if(!$request->has('id')){
-            return $this->failed('id必传', 422);
+            return $this->error(9002);
         }
         $id = $request->input('id');
         $address = $request->input('address');
@@ -69,9 +70,9 @@ class ExportAddressController extends Controller
         $addressM->address = $address;
         $addressM->note = $note;
         if(!$addressM->save()){
-            return $this->failed('保存失败');
+            return $this->error(1);
         };
-        return $this->success();
+        return $this->null();
     }
 
     /***
@@ -85,11 +86,11 @@ class ExportAddressController extends Controller
         $export_address = ExportAddress::find($address_id);
         if($export_address->user_id != \Auth::user()->id)
         {
-            return $this->failed('网络异常');
+            return $this->error(1);
         }
         if(!$export_address->delete()){
-            return $this->failed('网络异常');
+            return $this->error(1);
         }
-        return $this->success();
+        return $this->null();
     }
 }

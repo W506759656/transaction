@@ -1,6 +1,6 @@
 <?php
 
-namespace iBrand\EC\Open\Server\Services;
+namespace Wding\Transcatin\Services;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -11,7 +11,7 @@ use GuzzleHttp\Client;
  *
  * @method string getnewaddress(string $account)
  * @method string sendtoaddress(string $address, string $number)
- * @method array listtransactions(string $account, int $count)
+ * @method array listtranscations(string $account, int $count)
  */
 class BTCService
 {

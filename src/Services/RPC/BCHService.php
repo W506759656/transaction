@@ -1,6 +1,6 @@
 <?php
 
-namespace iBrand\EC\Open\Server\Services;
+namespace Wding\Transcatin\Services;
 
 class BCHService extends BTCService
 {

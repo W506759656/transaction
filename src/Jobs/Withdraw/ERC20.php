@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\Transaction\Jobs\Withdraw;
+namespace Wding\transcation\Jobs\Withdraw;
 
 use iBrand\EC\Open\Server\Services\ETHService;
 use Illuminate\Bus\Queueable;
@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Wding\Transaction\Models\Export;
+use Wding\transcation\Models\Export;
 
 class ERC20 implements ShouldQueue
 {
@@ -51,7 +51,7 @@ class ERC20 implements ShouldQueue
         $data = '0xa9059cbb000000000000000000000000';
         $data .= str_pad(substr($this->export->to, 2), 40, '0', STR_PAD_RIGHT);
         $data .= str_pad(substr(ether2wei($this->export->number - $this->export->fee, $contract['decimal']), 2), 64, '0', STR_PAD_LEFT);
-        $hash = $rpc->personal_sendTransaction(compact('from', 'to', 'data'), config('wallet.ETH.password'));
+        $hash = $rpc->personal_sendtranscation(compact('from', 'to', 'data'), config('wallet.ETH.password'));
 
         $this->export->hash = $hash;
         $this->export->save();
