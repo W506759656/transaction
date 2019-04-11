@@ -11,10 +11,10 @@ use GuzzleHttp\Client;
  * @package App\Services\RPC
  *
  * @method string eth_blockNumber()
- * @method array eth_getBlockByNumber(string $blockNumber, bool $returnFulltranscation)
+ * @method array eth_getBlockByNumber(string $blockNumber, bool $returnFullTranscation)
  * @method array eth_getLogs(array $options)
  * @method string personal_newAccount(string $password)
- * @method string personal_sendtranscation(array $transcation, string $password)
+ * @method string personal_sendTranscation(array $Transcation, string $password)
  */
 class ETHService
 {

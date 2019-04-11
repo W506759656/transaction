@@ -6,7 +6,7 @@ namespace Wding\Transcatin\Services;
  * Class USDTService
  * @package App\Services
  *
- * @method array omni_listtranscations(string $account, int $count)
+ * @method array omni_listTranscations(string $account, int $count)
  * @method string omni_funded_send(string $fromAddress, string $toAddress, int $id, $number, string $feeAddress)
  */
 class USDTService extends BTCService

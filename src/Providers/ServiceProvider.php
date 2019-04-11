@@ -1,15 +1,15 @@
 <?php
 
-namespace Wding\transcation\Providers;
+namespace Wding\Transcation\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
-use Wding\transcation\Console\Commands\Recharge\BCH;
-use Wding\transcation\Console\Commands\Recharge\BTC;
-use Wding\transcation\Console\Commands\Recharge\ERC20;
-use Wding\transcation\Console\Commands\Recharge\ETH;
-use Wding\transcation\Console\Commands\Recharge\LTC;
-use Wding\transcation\Console\Commands\Recharge\USDT;
+use Wding\Transcation\Console\Commands\Recharge\BCH;
+use Wding\Transcation\Console\Commands\Recharge\BTC;
+use Wding\Transcation\Console\Commands\Recharge\ERC20;
+use Wding\Transcation\Console\Commands\Recharge\ETH;
+use Wding\Transcation\Console\Commands\Recharge\LTC;
+use Wding\Transcation\Console\Commands\Recharge\USDT;
 
 class ServiceProvider extends IlluminateServiceProvider
 {
@@ -30,7 +30,7 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         Route::group([
             'prefix' => 'api',
-            'namespace' => 'Wding\\transcation\\Controllers',
+            'namespace' => 'Wding\\Transcation\\Controllers',
             'middleware' => ['auth:api'],
         ], function ($router) {
             require __DIR__ . '/../Routes/api.php';

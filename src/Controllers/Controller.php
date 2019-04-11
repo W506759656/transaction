@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Wding\transcation\Controllers;
+namespace Wding\Transcation\Controllers;
 
-use Wding\transcation\Traits\ResponseHelper;
+use Wding\Transcation\Traits\ResponseHelper;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;

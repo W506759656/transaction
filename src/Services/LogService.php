@@ -6,11 +6,11 @@
  * Time: 上午10:38
  */
 
-namespace Wding\transcation\Services;
+namespace Wding\Transcation\Services;
 
 
 use Carbon\Carbon;
-use Wding\transcation\Models\AccountLog;
+use Wding\Transcation\Models\AccountLog;
 
 class LogService
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Wding\transcation\Console\Commands\Recharge;
+namespace Wding\Transcation\Console\Commands\Recharge;
 
 use iBrand\EC\Open\Server\Services\ETHService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
-use Wding\transcation\Jobs\Recharge;
-use Wding\transcation\Models\Coin;
+use Wding\Transcation\Jobs\Recharge;
+use Wding\Transcation\Models\Coin;
 
 class ERC20 extends Command
 {
@@ -64,7 +64,7 @@ class ERC20 extends Command
                 ->each(function ($log) {
                     $config = config('erc20.' . $log['address']);
                     $coin = Coin::where('name', $config['name'])->first();
-                    $hash = $log['transcationHash'];
+                    $hash = $log['TranscationHash'];
                     $number = wei2ether($log['data'], $config['decimal']);
                     $from = implode('', explode('000000000000000000000000', $log['topics'][1]));
                     $to = implode('', explode('000000000000000000000000', $log['topics'][2]));

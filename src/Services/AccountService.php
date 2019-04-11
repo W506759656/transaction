@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\transcation\Services;
+namespace Wding\Transcation\Services;
 use Wding\Transcatin\Services\BCHService;
 use Wding\Transcatin\Services\BTCService;
 use Wding\Transcatin\Services\ETHService;

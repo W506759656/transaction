@@ -11,7 +11,7 @@ use GuzzleHttp\Client;
  *
  * @method string getnewaddress(string $account)
  * @method string sendtoaddress(string $address, string $number)
- * @method array listtranscations(string $account, int $count)
+ * @method array listTranscations(string $account, int $count)
  */
 class BTCService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wding\transcation\Jobs\Withdraw;
+namespace Wding\Transcation\Jobs\Withdraw;
 
 use iBrand\EC\Open\Server\Services\ETHService;
 use Illuminate\Bus\Queueable;
@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Wding\transcation\Models\Export;
+use Wding\Transcation\Models\Export;
 
 class ETH implements ShouldQueue
 {
@@ -47,7 +47,7 @@ class ETH implements ShouldQueue
         $from = '0xCEd3764e55B4DFBb201D395bf6e0bFa0abbfc71e';
         $to = $this->export->to;
         $value = ether2wei($this->export->number - $this->export->fee);
-        $hash = $rpc->personal_sendtranscation(compact('from', 'to', 'value'), config('wallet.ETH.password'));
+        $hash = $rpc->personal_sendTranscation(compact('from', 'to', 'value'), config('wallet.ETH.password'));
 
         $this->export->hash = $hash;
         $this->export->save();

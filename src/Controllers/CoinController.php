@@ -1,11 +1,11 @@
 <?php
 
-namespace Wding\transcation\Controllers;
+namespace Wding\Transcation\Controllers;
 
-use Wding\transcation\Models\Account;
-use Wding\transcation\Models\Coin;
-use Wding\transcation\Models\Setting;
-use Wding\transcation\Services\AccountService;
+use Wding\Transcation\Models\Account;
+use Wding\Transcation\Models\Coin;
+use Wding\Transcation\Models\Setting;
+use Wding\Transcation\Services\AccountService;
 
 /**
  * Created by PhpStorm.

@@ -1,19 +1,19 @@
 <?php
 
-namespace Wding\transcation\Controllers;
+namespace Wding\Transcation\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Wding\transcation\Models\Account;
-use Wding\transcation\Models\Export;
-use Wding\transcation\Models\ExportAddress;
-use Wding\transcation\Models\Import;
-use Wding\transcation\Models\Setting;
-use Wding\transcation\Requests\ExportRequest;
+use Wding\Transcation\Models\Account;
+use Wding\Transcation\Models\Export;
+use Wding\Transcation\Models\ExportAddress;
+use Wding\Transcation\Models\Import;
+use Wding\Transcation\Models\Setting;
+use Wding\Transcation\Requests\ExportRequest;
 use Wding\Transcation\Resources\ExportResource;
 use Wding\Transcation\Resources\ImportResource;
-use Wding\transcation\Services\AccountService;
-use Wding\transcation\Services\LogService;
+use Wding\Transcation\Services\AccountService;
+use Wding\Transcation\Services\LogService;
 
 /**
  * Created by PhpStorm.
@@ -56,7 +56,7 @@ class ExportController extends Controller
         $export_rate = Setting::where('key', 'export_rate')->value('value');
         $fee = $export_rate * $number; // 计算提现手续费
         try {
-            \DB::transcation(
+            \DB::Transcation(
                 function () use ($account, $address, $number, $coin_id, $fee) {
                     $export = new Export();
                     $export->user_id = Auth::user()->id;
@@ -93,7 +93,7 @@ class ExportController extends Controller
             return $this->error(9008);
         }
         try {
-            \DB::transcation(function () use ($account, $export) {
+            \DB::Transcation(function () use ($account, $export) {
                 $export->status = 2;
                 $export->save();
                 //钱包日志

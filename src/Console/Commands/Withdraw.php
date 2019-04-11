@@ -1,14 +1,14 @@
 <?php
-namespace Wding\transcation\Console\Commands;
+namespace Wding\Transcation\Console\Commands;
 
 use Illuminate\Console\Command;
-use Wding\transcation\Jobs\Withdraw\BCH;
-use Wding\transcation\Jobs\Withdraw\BTC;
-use Wding\transcation\Jobs\Withdraw\ERC20;
-use Wding\transcation\Jobs\Withdraw\ETH;
-use Wding\transcation\Jobs\Withdraw\LTC;
-use Wding\transcation\Jobs\Withdraw\USDT;
-use Wding\transcation\Models\Export;
+use Wding\Transcation\Jobs\Withdraw\BCH;
+use Wding\Transcation\Jobs\Withdraw\BTC;
+use Wding\Transcation\Jobs\Withdraw\ERC20;
+use Wding\Transcation\Jobs\Withdraw\ETH;
+use Wding\Transcation\Jobs\Withdraw\LTC;
+use Wding\Transcation\Jobs\Withdraw\USDT;
+use Wding\Transcation\Models\Export;
 
 class Withdraw extends Command
 {

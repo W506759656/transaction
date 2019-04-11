@@ -5,13 +5,13 @@
  * Date: 2019/3/29
  * Time: 下午2:37
  */
-namespace Wding\transcation\Controllers;
+namespace Wding\Transcation\Controllers;
 
 use Illuminate\Http\Request;
-use Wding\transcation\Models\ExportAddress;
-use Wding\transcation\Requests\AddressRequest;
+use Wding\Transcation\Models\ExportAddress;
+use Wding\Transcation\Requests\AddressRequest;
 use Wding\Transcation\Resources\AddressResource;
-use Wding\transcation\Transforms\ImportAddressTransform;
+use Wding\Transcation\Transforms\ImportAddressTransform;
 
 class ExportAddressController extends Controller
 {
